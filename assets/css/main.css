@@ -1,0 +1,81 @@
+body {
+	background-color: #FAFAFA;
+}
+
+/************ MISC *************/
+
+.clear-padding {
+	padding: 0;
+}
+
+/************ MAIN NAVBAR *************/
+
+.main-bg {
+	background-color: skyblue;
+	margin: 0 auto;
+	border-radius: 0 !important;
+}
+
+.nav-wrapper {
+	box-shadow: 0 0 4px rgba(0,0,0,0.4);
+}
+
+/************ MAIN H1 FOR ALL PAGES *************/
+
+.main-header {
+	margin-top: 35px;
+	font-weight: 100;
+	opacity: 0.8;
+}
+
+/************ SIGN UP PAGE *************/
+
+.red-star {
+	color: #CC0000;
+}
+
+/************ MASONRY *************/
+
+/** fluid 5 columns */
+.masonry-grid-item,
+.masonry-grid-sizer {
+	width: 20%;
+}
+
+.masonry-grid-item {
+	margin-bottom: 0;
+
+
+	/* Break long words and urls */
+
+	/* These are technically the same, but use both */
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+
+	-ms-word-break: break-all;
+	/* This is the dangerous one in WebKit, as it breaks things wherever */
+	word-break: break-all;
+	/* Instead use this non-standard one: */
+	word-break: break-word;
+
+	/* Adds a hyphen where the word breaks, if supported (No Blink) */
+	-ms-hyphens: auto;
+	-moz-hyphens: auto;
+	-webkit-hyphens: auto;
+	hyphens: auto;
+}
+
+.likes-block {
+	display:block;
+	opacity:0.8
+}
+
+.likes-block {
+	color:inherit;
+}
+
+.likes:hover,
+.reposts:hover {
+	text-decoration: underline;
+	cursor: pointer;
+}
