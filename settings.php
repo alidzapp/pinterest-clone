@@ -31,19 +31,19 @@ $user = DB::getInstance()->query(sprintf("SELECT * FROM users WHERE username='%s
 					<hr>
 					<div class="form-group">
 						<label>First name:</label>
-						<input type="text" name="firstname" disabled class="form-control" value="<?php echo $user->first_name; ?>">
+						<input type="text" name="firstname" disabled class="form-control" value="<?php echo htmlspecialchars($user->first_name); ?>">
 					</div>
 					<div class="form-group">
 						<label>Last name:</label>
-						<input type="text" name="lastname" disabled class="form-control" value="<?php echo $user->last_name; ?>">
+						<input type="text" name="lastname" disabled class="form-control" value="<?php echo htmlspecialchars($user->last_name); ?>">
 					</div>
 					<div class="form-group">
 						<label>Username:</label>
-						<input type="text" name="username" disabled class="form-control" value="<?php echo $user->username; ?>">
+						<input type="text" name="username" disabled class="form-control" value="<?php echo htmlspecialchars($user->username); ?>">
 					</div>
 					<div class="form-group">
 						<label>Email:</label>
-						<input type="email" name="email" disabled class="form-control" value="<?php echo $user->email; ?>">
+						<input type="email" name="email" disabled class="form-control" value="<?php echo htmlspecialchars($user->email); ?>">
 					</div>
 					<span class="help-block"><a href="changepassword.php">Change password</a> / <a href="editprofile.php">Edit profile</a></span>
 				</div>

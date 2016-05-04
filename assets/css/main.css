@@ -42,6 +42,21 @@ body {
 	width: 20%;
 }
 
+
+@media only screen and (max-width: 1000px) {
+	.masonry-grid-item,
+	.masonry-grid-sizer {
+		width: 33%;
+	}
+}
+
+@media only screen and (max-width: 500px) {
+	.masonry-grid-item,
+	.masonry-grid-sizer {
+		width: 50%;
+	}
+}
+
 .masonry-grid-item {
 	margin-bottom: 0;
 

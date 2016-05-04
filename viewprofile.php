@@ -22,7 +22,7 @@ if (isset($_GET["user"])) {
 		<?php require "partials/navbar.php"; ?>
 		<div class="row">
 			<div class="col-sm-12">
-				<h1 class="main-header"><?php echo isset($username) ? $username . "'s feed" : "No user found."; ?></h1>
+				<h1 class="main-header"><?php echo isset($username) ? htmlspecialchars($username) . "'s feed" : "No user found."; ?></h1>
 				<ol class="breadcrumb clear-padding">
 					<li><a href="index.php">Home</a></li>
 					<li class="active">View Profile</li>
