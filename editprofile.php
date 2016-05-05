@@ -60,8 +60,8 @@ if (isset($_POST["firstname"]) || isset($_POST["lastname"]) || isset($_POST["ema
 
 				$sql .= "WHERE username=?";
 				$values[] = Session::get("user");
-				echo $sql;
-				print_r($values);
+				// echo $sql;
+				// print_r($values);
 				$response = DB::getInstance()->query($sql, $values);
 				if (in_array("username", $fields) && !$response->error()) {
 					Session::set("user", Input::get("username"));

@@ -1,6 +1,6 @@
 <?php
 require "core/init.php";
-if (!User::isLoggedIn() || !Input::fieldExists("id", "get") || !is_numeric(Input::get("id"))) {
+if (!User::isLoggedIn() || !isset($_GET["id"]) || !is_numeric(Input::get("id"))) {
 	Redirect::to("index.php");
 }
 

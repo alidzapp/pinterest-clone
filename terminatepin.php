@@ -2,7 +2,7 @@
 
 require "core/init.php";
 
-if (User::isLoggedIn() && Input::fieldExists("pinid") && is_numeric(Input::get("pinid"))) {
+if (User::isLoggedIn() && isset($_POST["pinid"]) && is_numeric(Input::get("pinid"))) {
 	$pin = Pin::getPin(Input::get("pinid"));
 	if ($pin->results()[0]->username === Session::get("user")) {
 		$name = htmlspecialchars($pin->results()[0]->title);

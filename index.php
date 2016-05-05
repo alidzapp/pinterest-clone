@@ -1,7 +1,6 @@
 <?php
 require "core/init.php";
 $pins = DB::getInstance()->query("SELECT p.id, p.title, p.img_url, u.username, COUNT(DISTINCT l.liked_by) AS likes, COUNT(DISTINCT r.reposted_by) AS reposts FROM pins p INNER JOIN users u ON p.author_id=u.id LEFT JOIN likes l on p.id=l.pin_id LEFT JOIN reposts r on p.id=r.pin_id GROUP BY p.id ORDER BY p.id DESC LIMIT 5");
-
 ?>
 
 <!DOCTYPE html>

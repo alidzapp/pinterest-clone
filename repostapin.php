@@ -3,7 +3,7 @@ require "core/init.php";
 
 if (!User::isLoggedIn()) {
 	echo json_encode(array("err" => "not logged in"));
-} else if (Input::fieldExists("pinid")) {
+} else if (isset($_POST["pinid"])) {
 	// check if pin exists
 	$pin = Pin::getPin(Input::get("pinid"));
 	if ($pin->count()) {

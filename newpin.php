@@ -3,7 +3,7 @@ require "core/init.php";
 if (!User::isLoggedIn()) {
 	Redirect::to("login.php");
 }
-if (Input::exists() && Input::fieldExists("pinname") && Input::fieldExists("pinurl")) {
+if (isset($_POST["pinname"], $_POST["pinurl"])) {
 	$validate = new Validate();
 	$validate->check($_POST);
 
