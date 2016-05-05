@@ -5,3 +5,4 @@
 * search
 * admin
 * pagination
+* private messages

@@ -95,6 +95,13 @@ body {
 	cursor: pointer;
 }
 
+
+/************ USER DASHBOARD *************/
+
 .user-information input:disabled {
 	cursor: text !important;
+}
+
+.remove-bullets {
+	list-style-type: none;
 }
