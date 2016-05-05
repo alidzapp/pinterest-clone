@@ -42,7 +42,6 @@ if (isset($_GET["user"]) && strlen($_GET["user"]) > 0) {
 					</ul>
 					<div class="tab-content">
 						<div id="feed" class="tab-pane fade in active">
-							<h2>Feed</h2>
 							<?php if (isset($pins) && $pins->count()) : ?>
 							<div class="masonry-grid">
 							<div class="masonry-grid-sizer"></div>
@@ -53,28 +52,8 @@ if (isset($_GET["user"]) && strlen($_GET["user"]) > 0) {
 							<?php endif; ?>
 						</div>
 						<div id="profile" class="tab-pane fade">
-							<h2>User Information</h2>
 							<br>
-							<div class="form-group">
-								<label>First name:</label>
-								<span class="help-block"><?php echo htmlspecialchars($user->first_name); ?></span>
-							</div>
-							<div class="form-group">
-								<label>Last name:</label>
-								<span class="help-block"><?php echo htmlspecialchars($user->last_name); ?></span>
-							</div>
-							<div class="form-group">
-								<label>Username:</label>
-								<span class="help-block"><?php echo htmlspecialchars($user->username); ?></span>
-							</div>
-							<div class="form-group">
-								<label>Email:</label>
-								<span class="help-block"><?php echo htmlspecialchars($user->email); ?></span>
-							</div>
-							<div class="form-group">
-								<label>Joined:</label>
-								<span class="help-block"><?php echo htmlspecialchars($user->join_date); ?></span>
-							</div>
+							<?php require "views/user-information.php"; ?>
 						</div>
 					</div>
 				</div>
