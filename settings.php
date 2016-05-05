@@ -3,7 +3,7 @@ require "core/init.php";
 if (!User::isLoggedIn()) {
 	Redirect::to("login.php");
 }
-$user = DB::getInstance()->query(sprintf("SELECT * FROM users WHERE username='%s'", Session::get("user")))->results()[0];
+$user = DB::getInstance()->query("SELECT * FROM users WHERE username=?", array(Session::get("user")))->results()[0];
 ?>
 
 <!DOCTYPE html>
