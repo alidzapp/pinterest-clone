@@ -8,11 +8,12 @@ function isAuthor($username) {
 }
 
 foreach($pins->results() as $pin) {
+	$pin->title = htmlspecialchars($pin->title);
 	echo '<div class="masonry-grid-item thumbnail" data-pinid="', $pin->id, '">';
-	echo '<a href="', $pin->img_url, '"data-lightbox="images" data-title="', $pin->title, '">';
-	echo '<img src="', $pin->img_url, '" alt="', htmlspecialchars($pin->title), '" title="Enlarge"></a>';
+	echo '<a href="', $pin->img_url, '" data-lightbox="images">';
+	echo '<img src="', $pin->img_url, '" alt="', $pin->title, '" title="Enlarge"></a>';
 	echo '<div class="caption">';
-	echo '<h4>', htmlspecialchars($pin->title), '</h4>';
+	echo '<h4>', $pin->title, '</h4>';
 	if (isAuthor($pin->username)) {
 		echo '<span class="likes-block">', $pin->likes, ' likes ', $pin->reposts, ' reposts</span>';
 		echo '<a href="removepin.php?id=', $pin->id, '">Remove</a>';
