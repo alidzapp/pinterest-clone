@@ -27,7 +27,7 @@ $user = DB::getInstance()->query(sprintf("SELECT * FROM users WHERE username='%s
 			</div>
 			<div class="col-sm-12">
 				<h2>User information</h2>
-				<div class="col-sm-6 clear-padding">
+				<div class="col-sm-6 clear-padding user-information">
 					<hr>
 					<div class="form-group">
 						<label>First name:</label>

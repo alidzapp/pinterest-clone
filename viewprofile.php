@@ -16,6 +16,7 @@ if (isset($_GET["user"])) {
 	<meta charset="UTF-8">
 	<title>View Profile</title>
 	<?php require "partials/stylesheets.html"; ?>
+	<link rel="stylesheet" href="assets/css/lightbox.min.css">
 </head>
 <body>
 	<div class="container">
@@ -46,5 +47,6 @@ if (isset($_GET["user"])) {
 	<script src="assets/js/masonry.pkgd.min.js"></script>
 	<script src="assets/js/masonryinit.js"></script>
 	<script src="assets/js/like.js"></script>
+	<script src="assets/js/jslightbox.min.js"></script>
 </body>
 </html>

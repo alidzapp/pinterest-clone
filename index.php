@@ -9,6 +9,7 @@ $pins = DB::getInstance()->query("SELECT p.id, p.title, p.img_url, u.username, C
 	<meta charset="UTF-8">
 	<title>Pinterest</title>
 	<?php require "partials/stylesheets.html"; ?>
+	<link rel="stylesheet" href="assets/css/lightbox.min.css">
 </head>
 <body>
 	<div class="container">
@@ -46,5 +47,6 @@ $pins = DB::getInstance()->query("SELECT p.id, p.title, p.img_url, u.username, C
 	<script src="assets/js/masonry.pkgd.min.js"></script>
 	<script src="assets/js/masonryinit.js"></script>
 	<script src="assets/js/like.js"></script>
+	<script src="assets/js/jslightbox.min.js"></script>
 </body>
 </html>
