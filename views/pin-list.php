@@ -9,7 +9,7 @@ function isAuthor($username) {
 
 foreach($pins->results() as $pin) {
 	echo '<div class="masonry-grid-item thumbnail" data-pinid="', $pin->id, '">';
-	echo '<a href="', $pin->img_url, '" data-lightbox="images" data-title="', htmlentities(htmlspecialchars($pin->title)), '">';
+	echo '<a href="', $pin->img_url, '" data-lightbox="', htmlentities(htmlspecialchars($pin->title)), '" data-title="', htmlentities(htmlspecialchars($pin->title)), '">';
 	echo '<img src="', $pin->img_url, '" alt="', htmlspecialchars($pin->title), '" title="Enlarge"></a>';
 	echo '<div class="caption">';
 	echo '<h4>', htmlspecialchars($pin->title), '</h4>';
