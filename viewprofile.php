@@ -43,12 +43,12 @@ if (isset($_GET["user"]) && strlen($_GET["user"]) > 0) {
 					<div class="tab-content">
 						<div id="feed" class="tab-pane fade in active">
 							<?php if (isset($pins) && $pins->count()) : ?>
-							<div class="masonry-grid">
-							<div class="masonry-grid-sizer"></div>
-							<div class="row"><?php require "views/pin-list.php"; ?></div>
-							</div>
+								<div class="masonry-grid">
+									<div class="masonry-grid-sizer"></div>
+									<div class="row"><?php require "views/pin-list.php"; ?></div>
+								</div>
 							<?php elseif (isset($pins) && !$pins->count()) : ?>
-							<h2>This user has no pins yet.</h2>
+								<h2>This user has no pins yet.</h2>
 							<?php endif; ?>
 						</div>
 						<div id="profile" class="tab-pane fade">

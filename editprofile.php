@@ -105,11 +105,11 @@ if (isset($_POST["firstname"]) || isset($_POST["lastname"]) || isset($_POST["ema
 				<form action="editprofile.php" method="post">
 					<div class="col-sm-6 clear-padding">
 						<?php
-						if (Session::exists("editprofile-error")) {
-							printf('<div class="alert alert-danger"><strong>%s</strong></div>', Session::flash("editprofile-error"));
-						} elseif (Session::exists("editprofile-success")) {
-							printf('<div class="alert alert-success"><strong>%s</strong></div>', Session::flash("editprofile-success"));
-						}
+							if (Session::exists("editprofile-error")) {
+								printf('<div class="alert alert-danger"><strong>%s</strong></div>', Session::flash("editprofile-error"));
+							} elseif (Session::exists("editprofile-success")) {
+								printf('<div class="alert alert-success"><strong>%s</strong></div>', Session::flash("editprofile-success"));
+							}
 						?>
 						<div class="form-group <?php if (isset($validate) && $validate->error("firstname")) echo " has-error"; ?>">
 							<label>First Name</label>

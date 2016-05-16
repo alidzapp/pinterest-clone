@@ -1,5 +1,4 @@
 <?php
-
 function isAuthor($username) {
 	if (User::isLoggedIn()) {
 		return Session::get("user") === $username;

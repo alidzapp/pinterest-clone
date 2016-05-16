@@ -39,11 +39,11 @@ if (isset($_POST["pinname"], $_POST["pinurl"])) {
 			</div>
 			<div class="col-sm-12">
 			<?php
-			if (Session::exists("newpin-error")) {
-				printf('<div class="alert alert-danger"><strong>%s</strong></div>', Session::flash("newpin-error"));
-			} elseif (Session::exists("newpin-success")) {
-				printf('<div class="alert alert-success"><strong>%s</strong></div>', Session::flash("newpin-success"));
-			}
+				if (Session::exists("newpin-error")) {
+					printf('<div class="alert alert-danger"><strong>%s</strong></div>', Session::flash("newpin-error"));
+				} elseif (Session::exists("newpin-success")) {
+					printf('<div class="alert alert-success"><strong>%s</strong></div>', Session::flash("newpin-success"));
+				}
 			?>
 				<form action="newpin.php" method="post">
 					<div class="col-sm-6 clear-padding">

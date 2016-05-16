@@ -29,19 +29,19 @@ $pins = Pin::getByUser(Session::get("user"));
 			</div>
 			<div class="col-sm-12">
 				<?php
-				if (Session::exists("pinremove-success")) {
-					printf('<div class="alert alert-success"><strong>%s</strong></div>', Session::flash("pinremove-success"));
-				}
+					if (Session::exists("pinremove-success")) {
+						printf('<div class="alert alert-success"><strong>%s</strong></div>', Session::flash("pinremove-success"));
+					}
 				?>
 				<?php if ($pins->count()) : ?>
-				<div class="masonry-grid">
-					<div class="masonry-grid-sizer"></div>
-					<div class="row">
-						<?php require "views/pin-list.php"; ?>
+					<div class="masonry-grid">
+						<div class="masonry-grid-sizer"></div>
+						<div class="row">
+							<?php require "views/pin-list.php"; ?>
+						</div>
 					</div>
-				</div>
 				<?php else : ?>
-				<p>You have no pins! <a href="newpin.php">Click </a>to add one!</p>
+					<p>You have no pins! <a href="newpin.php">Click </a>to add one!</p>
 				<?php endif; ?>
 			</div>
 		</div>

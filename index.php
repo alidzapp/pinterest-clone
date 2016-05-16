@@ -22,9 +22,9 @@ $pins = DB::getInstance()->query("SELECT p.id, p.title, p.img_url, u.username, C
 				<?php else : ?>
 					<h1 class="main-header">Welcome, <?php echo htmlspecialchars(Session::get("user")); ?></h1>
 					<?php
-					if (Session::exists("signup-success")) {
-						printf('<div class="alert alert-success"><strong>%s</strong></div>', Session::flash("signup-success"));
-					}
+						if (Session::exists("signup-success")) {
+							printf('<div class="alert alert-success"><strong>%s</strong></div>', Session::flash("signup-success"));
+						}
 					?>
 				<?php endif; ?>
 				<hr>
@@ -32,12 +32,12 @@ $pins = DB::getInstance()->query("SELECT p.id, p.title, p.img_url, u.username, C
 			<div class="col-sm-12">
 				<h2>Recent Pins</h2>
 				<?php if ($pins->count()) : ?>
-				<div class="masonry-grid">
-					<div class="masonry-grid-sizer"></div>
-					<div class="row"><?php require "views/pin-list.php"; ?></div>
-				</div>
+					<div class="masonry-grid">
+						<div class="masonry-grid-sizer"></div>
+						<div class="row"><?php require "views/pin-list.php"; ?></div>
+					</div>
 				<?php else : ?>
-				<h3>Nothing found.</h3>
+					<h3>Nothing found.</h3>
 				<?php endif; ?>
 			</div>
 		</div>

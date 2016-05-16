@@ -52,11 +52,11 @@ if (isset($_POST["oldpassword"], $_POST["password"], $_POST["passwordconfirm"]))
 				<form action="changepassword.php" method="post">
 					<div class="col-sm-6 clear-padding">
 						<?php
-						if (Session::exists("changepassword-error")) {
-							printf('<div class="alert alert-danger"><strong>%s</strong></div>', Session::flash("changepassword-error"));
-						} elseif (Session::exists("changepassword-success")) {
-							printf('<div class="alert alert-success"><strong>%s</strong></div>', Session::flash("changepassword-success"));
-						}
+							if (Session::exists("changepassword-error")) {
+								printf('<div class="alert alert-danger"><strong>%s</strong></div>', Session::flash("changepassword-error"));
+							} elseif (Session::exists("changepassword-success")) {
+								printf('<div class="alert alert-success"><strong>%s</strong></div>', Session::flash("changepassword-success"));
+							}
 						?>
 						<div class="form-group">
 							<label>Current Password</label>

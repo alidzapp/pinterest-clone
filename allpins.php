@@ -25,12 +25,12 @@ $pins = Pin::getAllPins();
 			</div>
 			<div class="col-sm-12">
 				<?php if ($pins->count()) : ?>
-				<div class="masonry-grid">
-					<div class="masonry-grid-sizer"></div>
-					<div class="row"><?php require "views/pin-list.php"; ?></div>
-				</div>
+					<div class="masonry-grid">
+						<div class="masonry-grid-sizer"></div>
+						<div class="row"><?php require "views/pin-list.php"; ?></div>
+					</div>
 				<?php else : ?>
-				<h2>Nothing found.</h2>
+					<h2>Nothing found.</h2>
 				<?php endif; ?>
 			</div>
 		</div>

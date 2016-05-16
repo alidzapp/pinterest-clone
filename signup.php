@@ -47,9 +47,9 @@ if (isset($_POST["username"], $_POST["email"], $_POST["password"], $_POST["passw
 			<form action="signup.php" method="post">
 				<div class="col-sm-6">
 					<?php
-					if (Session::exists("signup-error")) {
-						printf('<div class="alert alert-danger"><strong>%s</strong></div>', Session::flash("signup-error"));
-					}
+						if (Session::exists("signup-error")) {
+							printf('<div class="alert alert-danger"><strong>%s</strong></div>', Session::flash("signup-error"));
+						}
 					?>
 					<div class="form-group <?php if (Input::exists() && $validate->error("firstname")) echo " has-error"; ?>">
 						<label for="signup-firstname">First Name</label>
