@@ -2,12 +2,17 @@
 require "core/init.php";
 if (isset($_GET["user"]) && mb_strlen($_GET["user"]) > 0) {
 	$name = urldecode($_GET["user"]);
-	// $user = DB::getInstance()->query("SELECT username FROM users WHERE username=?", array($name));
 	$user = DB::getInstance()->query("SELECT username, first_name, last_name, email, username, DATE_FORMAT(date_added, '%D %b %Y') AS join_date FROM users WHERE username=?", array($name));
 	if ($user->count()) {
 		$user = $user->results()[0];
 		$username = $user->username;
-		$pins = Pin::getByUser($username);
+		$pagination = new Pagination();
+		$rows = Pin::getByUser(
+			$username,
+			$pagination->start,
+			$pagination->limit
+		);
+		$pins = $rows->results();
 	}
 } else {
 	Redirect::to("index.php");
@@ -42,12 +47,15 @@ if (isset($_GET["user"]) && mb_strlen($_GET["user"]) > 0) {
 					</ul>
 					<div class="tab-content">
 						<div id="feed" class="tab-pane fade in active">
-							<?php if (isset($pins) && $pins->count()) : ?>
+							<?php if (isset($pins) && !empty($pins)) : ?>
 								<div class="masonry-grid">
 									<div class="masonry-grid-sizer"></div>
 									<div class="row"><?php require "views/pin-list.php"; ?></div>
 								</div>
-							<?php elseif (isset($pins) && !$pins->count()) : ?>
+								<?php require "models/pagination-stuff.php"; ?>
+								<?php require "views/pagination-limits.php"; ?>
+								<?php require "views/pagination-view.php"; ?>
+							<?php elseif (isset($pins) && empty($pins)) : ?>
 								<h2>This user has no pins yet.</h2>
 							<?php endif; ?>
 						</div>

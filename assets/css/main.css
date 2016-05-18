@@ -105,3 +105,14 @@ body {
 .remove-bullets {
 	list-style-type: none;
 }
+
+
+/************ PAGINATION STUFF *************/
+
+.pagination-pagecount {
+	margin-top:2%;
+}
+
+.pagination {
+	margin: 0;
+}

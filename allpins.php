@@ -1,6 +1,7 @@
 <?php
 require "core/init.php";
-$pins = Pin::getAllPins();
+$pagination = new Pagination();
+$pins = Pin::getAllPins($pagination->start, $pagination->limit)->results();
 ?>
 
 <!DOCTYPE html>
@@ -24,11 +25,14 @@ $pins = Pin::getAllPins();
 				<hr>
 			</div>
 			<div class="col-sm-12">
-				<?php if ($pins->count()) : ?>
+				<?php if (!empty($pins)) : ?>
 					<div class="masonry-grid">
 						<div class="masonry-grid-sizer"></div>
 						<div class="row"><?php require "views/pin-list.php"; ?></div>
 					</div>
+					<?php require "models/pagination-stuff.php"; ?>
+					<?php require "views/pagination-limits.php"; ?>
+					<?php require "views/pagination-view.php"; ?>
 				<?php else : ?>
 					<h2>Nothing found.</h2>
 				<?php endif; ?>

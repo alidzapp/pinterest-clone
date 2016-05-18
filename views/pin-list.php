@@ -6,7 +6,7 @@ function isAuthor($username) {
 	return false;
 }
 
-foreach($pins->results() as $pin) {
+foreach ($pins as $pin) {
 	echo '<div class="masonry-grid-item thumbnail" data-pinid="', $pin->id, '">';
 	echo '<a href="', $pin->img_url, '" data-lightbox="', htmlentities(htmlspecialchars($pin->title)), '" data-title="', htmlentities(htmlspecialchars($pin->title)), '">';
 	echo '<img src="', $pin->img_url, '" alt="', htmlspecialchars($pin->title), '" title="Enlarge"></a>';
@@ -21,22 +21,3 @@ foreach($pins->results() as $pin) {
 	}
 	echo '</div></div>';
 }
-
-
-
-
-// printf('
-	// 	<div class="masonry-grid-item thumbnail">
-	// 		<img src="%s">
-	// 		<div class="caption">
-	// 			<h4>%s</h4>
-	// 			<span class="likes">%d likes %d reposts</span>
-	// 			<a href="removepin.php?id=%d">remove</a>
-	// 		</div>
-	// 	</div>',
-	// 	$pin->img_url,
-	// 	htmlspecialchars($pin->title),
-	// 	$pin->likes,
-	// 	$pin->reposts,
-	// 	$pin->id
-	// );

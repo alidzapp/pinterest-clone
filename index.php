@@ -1,6 +1,15 @@
 <?php
 require "core/init.php";
-$pins = DB::getInstance()->query("SELECT p.id, p.title, p.img_url, u.username, COUNT(DISTINCT l.liked_by) AS likes, COUNT(DISTINCT r.reposted_by) AS reposts FROM pins p INNER JOIN users u ON p.author_id=u.id LEFT JOIN likes l on p.id=l.pin_id LEFT JOIN reposts r on p.id=r.pin_id GROUP BY p.id ORDER BY p.id DESC LIMIT 5");
+$pins = DB::getInstance()->query("
+	SELECT p.id, p.title, p.img_url, u.username, COUNT(DISTINCT l.liked_by) AS likes, COUNT(DISTINCT r.reposted_by) AS reposts
+	FROM pins p
+	INNER JOIN users u ON p.author_id=u.id
+	LEFT JOIN likes l on p.id=l.pin_id
+	LEFT JOIN reposts r on p.id=r.pin_id
+	GROUP BY p.id
+	ORDER BY p.id
+	DESC LIMIT 5
+")->results();
 ?>
 
 <!DOCTYPE html>
@@ -31,7 +40,7 @@ $pins = DB::getInstance()->query("SELECT p.id, p.title, p.img_url, u.username, C
 			</div>
 			<div class="col-sm-12">
 				<h2>Recent Pins</h2>
-				<?php if ($pins->count()) : ?>
+				<?php if (!empty($pins)) : ?>
 					<div class="masonry-grid">
 						<div class="masonry-grid-sizer"></div>
 						<div class="row"><?php require "views/pin-list.php"; ?></div>

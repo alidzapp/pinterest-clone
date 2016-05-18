@@ -3,8 +3,13 @@ require "core/init.php";
 if (!User::isLoggedIn()) {
 	Redirect::to("login.php");
 }
-
-$pins = Pin::getByUser(Session::get("user"));
+$pagination = new Pagination();
+$rows = Pin::getByUser(
+	Session::get("user"),
+	$pagination->start,
+	$pagination->limit
+);
+$pins = $rows->results();
 ?>
 
 <!DOCTYPE html>
@@ -33,13 +38,16 @@ $pins = Pin::getByUser(Session::get("user"));
 						printf('<div class="alert alert-success"><strong>%s</strong></div>', Session::flash("pinremove-success"));
 					}
 				?>
-				<?php if ($pins->count()) : ?>
+				<?php if (!empty($pins)) : ?>
 					<div class="masonry-grid">
 						<div class="masonry-grid-sizer"></div>
 						<div class="row">
 							<?php require "views/pin-list.php"; ?>
 						</div>
 					</div>
+					<?php require "models/pagination-stuff.php"; ?>
+					<?php require "views/pagination-limits.php"; ?>
+					<?php require "views/pagination-view.php"; ?>
 				<?php else : ?>
 					<p>You have no pins! <a href="newpin.php">Click </a>to add one!</p>
 				<?php endif; ?>
