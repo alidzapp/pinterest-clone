@@ -14,6 +14,7 @@ class Pin {
 	}
 
 	public static function getByUser($username, $start, $end) {
+		// binding for limit is hard
 		$sql = "
 			SELECT SQL_CALC_FOUND_ROWS t1.id, t1.title, t1.img_url, t3.username, COUNT(DISTINCT t2.liked_by) AS likes, COUNT(DISTINCT t4.reposted_by) AS reposts
 			FROM `pins` t1

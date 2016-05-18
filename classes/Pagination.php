@@ -1,7 +1,7 @@
 <?php
 
 class Pagination {
-	public $page, $limit, $start, $totalRows, $offset, $limits, $totalPages;
+	public $page, $limit, $start, $totalRows, $totalPages, $offset, $limits;
 	private $_db;
 
 	public function __construct() {

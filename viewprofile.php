@@ -52,6 +52,7 @@ if (isset($_GET["user"]) && mb_strlen($_GET["user"]) > 0) {
 									<div class="masonry-grid-sizer"></div>
 									<div class="row"><?php require "views/pin-list.php"; ?></div>
 								</div>
+								<hr>
 								<?php require "models/pagination-stuff.php"; ?>
 								<?php require "views/pagination-limits.php"; ?>
 								<?php require "views/pagination-view.php"; ?>

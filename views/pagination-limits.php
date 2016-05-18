@@ -1,9 +1,9 @@
 <div class="row pagination-pagecount">
-	<div class="col-sm-12">
-		<?php printf('<p>Showing page %d of %d.</p>', $pagination->page, $pagination->totalPages); ?>
+	<div class="col-sm-6">
+		<?php printf('<p class="pull-left">Showing page %d of %d.</p>', $pagination->page, $pagination->totalPages); ?>
 	</div>
-	<div class="col-sm-12">
-		<form action="" method="get">
+	<div class="col-sm-6">
+		<form action="" method="get" class="pull-right">
 			<?php if (strtok($_SERVER["REQUEST_URI"], "?") === "/viewprofile.php") : ?>
 				<input type="text" hidden value="<?php echo htmlspecialchars($_GET["user"]); ?>" name="user">
 			<?php endif; ?>
