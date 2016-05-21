@@ -3,8 +3,18 @@ require "core/init.php";
 if (!User::isLoggedIn()) {
 	Redirect::to("login.php");
 }
-// $user = DB::getInstance()->query("SELECT * FROM users WHERE username=?", array(Session::get("user")))->results()[0];
-$user = DB::getInstance()->query("SELECT u.first_name, u.last_name, u.email, u.username, DATE_FORMAT(u.date_added, '%D %b %Y') AS join_date, COUNT(DISTINCT p.id) AS pin_amount, COUNT(DISTINCT l.id) AS likes_amount, COUNT(DISTINCT r.id) AS reposts_amount FROM `users` u LEFT JOIN pins p ON u.id=p.author_id LEFT JOIN likes l ON u.id=l.liked_by LEFT JOIN reposts r on u.id=r.reposted_by WHERE u.username=? GROUP BY u.username", array(Session::get("user")))->results()[0];
+
+$user = DB::getInstance()->query("
+	SELECT u.first_name, u.last_name, u.email, u.username, DATE_FORMAT(u.date_added, '%D %b %Y') AS join_date, COUNT(DISTINCT p.id) AS pin_amount, COUNT(DISTINCT l.id) AS likes_amount, COUNT(DISTINCT r.id) AS reposts_amount
+	FROM `users` u
+	LEFT JOIN pins p ON u.id=p.author_id
+	LEFT JOIN likes l ON u.id=l.liked_by
+	LEFT JOIN reposts r on u.id=r.reposted_by
+	WHERE u.username=?
+	GROUP BY u.username
+	",
+	array(Session::get("user")))
+		->results()[0];
 ?>
 
 <!DOCTYPE html>
@@ -32,22 +42,6 @@ $user = DB::getInstance()->query("SELECT u.first_name, u.last_name, u.email, u.u
 					<hr>
 					<?php require "views/user-information.php"; ?>
 					<span class="help-block"><a href="changepassword.php">Change password</a> / <a href="editprofile.php">Edit profile</a></span>
-					<!-- <div class="form-group">
-						<label>First name:</label>
-						<input type="text" name="firstname" disabled class="form-control" value="<?php echo htmlspecialchars($user->first_name); ?>">
-					</div>
-					<div class="form-group">
-						<label>Last name:</label>
-						<input type="text" name="lastname" disabled class="form-control" value="<?php echo htmlspecialchars($user->last_name); ?>">
-					</div>
-					<div class="form-group">
-						<label>Username:</label>
-						<input type="text" name="username" disabled class="form-control" value="<?php echo htmlspecialchars($user->username); ?>">
-					</div>
-					<div class="form-group">
-						<label>Email:</label>
-						<input type="email" name="email" disabled class="form-control" value="<?php echo htmlspecialchars($user->email); ?>">
-					</div> -->
 				</div>
 			</div>
 			<div class="col-sm-6">
@@ -59,6 +53,9 @@ $user = DB::getInstance()->query("SELECT u.first_name, u.last_name, u.email, u.u
 						<li><span class="glyphicon glyphicon-star"></span> <?php echo $user->likes_amount, " pins liked."; ?></li>
 						<li><span class="glyphicon glyphicon-repeat"></span> <?php echo $user->reposts_amount, " pins reposted."; ?></li>
 					</ul>
+					<a href="newpin.php">New Pin</a>
+					<span>|</span>
+					<a href="mypins.php">My Pins</a>
 				</div>
 			</div>
 		</div>

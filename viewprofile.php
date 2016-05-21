@@ -2,7 +2,13 @@
 require "core/init.php";
 if (isset($_GET["user"]) && mb_strlen($_GET["user"]) > 0) {
 	$name = urldecode($_GET["user"]);
-	$user = DB::getInstance()->query("SELECT username, first_name, last_name, email, username, DATE_FORMAT(date_added, '%D %b %Y') AS join_date FROM users WHERE username=?", array($name));
+	$user = DB::getInstance()->query("
+		SELECT username, first_name, last_name, email, username, DATE_FORMAT(date_added, '%D %b %Y') AS join_date
+		FROM users
+		WHERE username=?
+		",
+		array($name)
+	);
 	if ($user->count()) {
 		$user = $user->results()[0];
 		$username = $user->username;

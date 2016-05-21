@@ -59,7 +59,7 @@ if (isset($_POST["pinname"], $_POST["pinurl"])) {
 						</div>
 						<input type="submit" value="Add" class="btn btn-default">
 						<hr>
-						<span class="help-block"><a href="mypins.php">Your pins</a>.</span>
+						<span class="help-block"><a href="mypins.php">My Pins</a>.</span>
 					</div>
 				</form>
 			</div>
