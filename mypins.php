@@ -4,7 +4,7 @@ if (!User::isLoggedIn()) {
 	Redirect::to("login.php");
 }
 $pagination = new Pagination();
-$rows = User::getPins(
+$rows = User::pins(
 	Session::get("user"),
 	$pagination->start,
 	$pagination->limit

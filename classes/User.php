@@ -25,7 +25,7 @@ class User {
 		return false;
 	}
 
-	public static function getPins($username, $start, $end) {
+	public static function pins($username, $start, $end) {
 		// binding for limit is hard
 		$sql = "
 			SELECT SQL_CALC_FOUND_ROWS t1.id, t1.title, t1.img_url, t3.username, COUNT(DISTINCT t2.liked_by) AS likes, COUNT(DISTINCT t4.reposted_by) AS reposts

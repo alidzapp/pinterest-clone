@@ -13,7 +13,7 @@ if (isset($_GET["user"]) && mb_strlen($_GET["user"]) > 0) {
 		$user = $user->results()[0];
 		$username = $user->username;
 		$pagination = new Pagination();
-		$rows = User::getPins(
+		$rows = User::pins(
 			$username,
 			$pagination->start,
 			$pagination->limit
