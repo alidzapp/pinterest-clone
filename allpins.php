@@ -2,6 +2,8 @@
 require "core/init.php";
 $pagination = new Pagination();
 $pins = Pin::getAllPins($pagination->start, $pagination->limit)->results();
+$pagination->totalRows();
+$pagination->pageOffset();
 ?>
 
 <!DOCTYPE html>
@@ -31,7 +33,6 @@ $pins = Pin::getAllPins($pagination->start, $pagination->limit)->results();
 						<div class="row"><?php require "views/pin-list.php"; ?></div>
 					</div>
 					<hr>
-					<?php require "models/pagination-stuff.php"; ?>
 					<?php require "views/pagination-limits.php"; ?>
 					<?php require "views/pagination-view.php"; ?>
 				<?php else : ?>

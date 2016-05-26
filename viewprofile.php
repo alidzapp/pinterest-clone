@@ -19,6 +19,8 @@ if (isset($_GET["user"]) && mb_strlen($_GET["user"]) > 0) {
 			$pagination->limit
 		);
 		$pins = $rows->results();
+		$pagination->totalRows();
+		$pagination->pageOffset();
 	}
 } else {
 	Redirect::to("index.php");
@@ -59,7 +61,6 @@ if (isset($_GET["user"]) && mb_strlen($_GET["user"]) > 0) {
 									<div class="row"><?php require "views/pin-list.php"; ?></div>
 								</div>
 								<hr>
-								<?php require "models/pagination-stuff.php"; ?>
 								<?php require "views/pagination-limits.php"; ?>
 								<?php require "views/pagination-view.php"; ?>
 							<?php elseif (isset($pins) && empty($pins)) : ?>

@@ -10,6 +10,8 @@ $rows = Pin::getByUser(
 	$pagination->limit
 );
 $pins = $rows->results();
+$pagination->totalRows();
+$pagination->pageOffset();
 ?>
 
 <!DOCTYPE html>
@@ -46,7 +48,6 @@ $pins = $rows->results();
 						</div>
 					</div>
 					<hr>
-					<?php require "models/pagination-stuff.php"; ?>
 					<?php require "views/pagination-limits.php"; ?>
 					<?php require "views/pagination-view.php"; ?>
 				<?php else : ?>
