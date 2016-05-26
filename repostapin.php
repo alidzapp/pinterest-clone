@@ -5,7 +5,7 @@ if (!User::isLoggedIn()) {
 	echo json_encode(array("err" => "not logged in"));
 } else if (isset($_POST["pinid"])) {
 	// check if pin exists
-	$pin = Pin::getPin(Input::get("pinid"));
+	$pin = Pin::find(Input::get("pinid"));
 	if ($pin->count()) {
 		$results = $pin->results()[0];
 		$author = $results->username;

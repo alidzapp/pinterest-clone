@@ -13,9 +13,14 @@ class Pin {
 		$this->_db->query("INSERT INTO pins (author_id, title, img_url) VALUES (?, ?, ?)", array($id, $name, $img));
 	}
 
-	public static function getPin($id) {
+	public static function find($id) {
 		$sql = "SELECT * from pins INNER JOIN users on pins.author_id=users.id WHERE pins.id=?";
 		return DB::getInstance()->query($sql, array($id));
+	}
+
+	public static function remove($id) {
+		$sql = "DELETE FROM pins WHERE id=?";
+		DB::getInstance()->query($sql, array($id));
 	}
 
 	public static function all($start, $end) {

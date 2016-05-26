@@ -4,8 +4,7 @@ if (!User::isLoggedIn() || !isset($_GET["id"]) || !is_numeric(Input::get("id")))
 	Redirect::to("index.php");
 }
 
-// $sql = sprintf("SELECT * from pins INNER JOIN users on pins.author_id=users.id WHERE pins.id=%d", Input::get("id"));
-$pin = Pin::getPin(Input::get("id"));
+$pin = Pin::find(Input::get("id"));
 if ($pin->results()[0]->username !== Session::get("user")) {
 	die("Error 403. Access denied.");
 }
