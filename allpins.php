@@ -1,7 +1,7 @@
 <?php
 require "core/init.php";
 $pagination = new Pagination();
-$pins = Pin::getAllPins($pagination->start, $pagination->limit)->results();
+$pins = Pin::all($pagination->start, $pagination->limit)->results();
 $pagination->totalRows();
 $pagination->pageOffset();
 ?>
