@@ -1,5 +1,5 @@
 <?php foreach ($comments as $comment) : ?>
-	<div class="media pin-comment">
+	<div class="media pin-comment" id="<?php echo $comment->id; ?>">
 		<div class="media-left">
 			<h1 class="glyphicon glyphicon-user"></h1>
 		</div>
