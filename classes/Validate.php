@@ -38,6 +38,9 @@ class Validate {
 				case "pinurl":
 					$this->checkImg($input);
 					break;
+				case "comment":
+					$this->checkComment($input);
+					break;
 			}
 		}
 
@@ -135,6 +138,13 @@ class Validate {
 			$this->addError("pinname", "Maximum length is 100 characters.");
 		} elseif (!$length) {
 			$this->addError("pinname", "Name is required.");
+		}
+	}
+
+	private function checkComment($comment) {
+		$length = mb_strlen($comment);
+		if (!$length) {
+			$this->addError("comment", "Comment cannot be empty.");
 		}
 	}
 

@@ -32,8 +32,11 @@ class User {
 		return false;
 	}
 
-	// public static function find($username) {
-	// }
+	public static function find($username) {
+		return DB::getInstance()
+			->query("SELECT * FROM users WHERE username=?", array($username))
+			->results()[0];
+	}
 
 	public static function pins($username, $start, $end) {
 		// binding for limit is hard

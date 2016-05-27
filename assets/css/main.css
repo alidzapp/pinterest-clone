@@ -112,3 +112,13 @@ body {
 .pagination {
 	margin: 0;
 }
+
+/************ COMMENTS *************/
+
+.pin-comment {
+	margin-top: 40px;
+}
+
+.comment-date {
+	opacity: 0.8;
+}

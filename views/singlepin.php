@@ -24,3 +24,6 @@
 		</div>
 	</div>
 </div>
+<div class="col-sm-12">
+	<h4><?php echo $pin->comments; ?> comment(s)</h4>
+</div>

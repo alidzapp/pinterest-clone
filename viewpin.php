@@ -1,4 +1,19 @@
 <?php
+require "core/init.php";
+if (isset($_POST["comment"], $_GET["id"]) && User::isLoggedIn()) {
+	$pinId = (int) $_GET["id"];
+	$body = $_POST["comment"];
+	$validate = new Validate();
+	$validate->check($_POST);
+	if ($validate->passed()) {
+		if (Pin::exists($pinId)) {
+			$user = User::find(Session::get("user"));
+			$comment = new Comment();
+			$comment->create($user->id, $pinId, $body);
+			Redirect::to("viewpin.php?id=" . $pinId);
+		}
+	}
+}
 require "models/viewpin.php";
 ?>
 
@@ -28,13 +43,13 @@ require "models/viewpin.php";
 					<div class="row">
 						<?php require "views/singlepin.php"; ?>
 						<div class="col-sm-12">
-							<h4>0 comment(s)</h4>
 							<hr>
 							<?php if (User::isLoggedIn()) : ?>
 								<form action="" method="post">
 									<div class="form-group">
 										<label>Leave a comment</label>
-										<textarea name="comment" rows="10" class="form-control"></textarea>
+										<?php if (isset($validate) && !empty($validate->errors())) echo $validate->error("comment"); ?>
+										<textarea name="comment" rows="10" class="form-control" required></textarea>
 									</div>
 									<input type="submit" value="Send" class="btn btn-default">
 								</form>
@@ -47,27 +62,7 @@ require "models/viewpin.php";
 				</div>
 
 				<div class="col-sm-12">
-					<div class="row">
-					<div class="media">
-						  <div class="media-left">
-						      <h1 class="glyphicon glyphicon-user"></h1>
-						  </div>
-						  <div class="media-body">
-						    <h4 class="media-heading">User says:</h4>
-						    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit consequatur facere magni architecto nostrum sequi ut totam magnam dolorem dolores facilis, obcaecati aliquam distinctio. Similique est temporibus, aspernatur cum debitis, a voluptas repudiandae minus ea deserunt cumque velit ducimus soluta, laborum dolor doloribus distinctio. Aspernatur quia hic, nulla ab velit, culpa labore magni magnam placeat sequi, nostrum, omnis veritatis aliquam modi reprehenderit vel non! Esse at hic nostrum dignissimos sed officiis, similique labore ducimus ab, asperiores maxime dolorum! Molestiae quis aliquam voluptatem neque, earum eius incidunt animi at voluptas? Ipsa tenetur neque assumenda, labore voluptate possimus odio dolorum atque impedit.</p>
-						    <div class="media-info" style="opacity:0.8">5. may 2016</div>
-						  </div>
-						</div>
-						<div class="media">
-						  <div class="media-left">
-						      <h1 class="glyphicon glyphicon-user"></h1>
-						  </div>
-						  <div class="media-body">
-						    <h4 class="media-heading">User says:</h4>
-						    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit consequatur facere magni architecto nostrum sequi ut totam magnam dolorem dolores facilis, obcaecati aliquam distinctio. Similique est temporibus, aspernatur cum debitis, a voluptas repudiandae minus ea deserunt cumque velit ducimus soluta, laborum dolor doloribus distinctio. Aspernatur quia hic, nulla ab velit, culpa labore magni magnam placeat sequi, nostrum, omnis veritatis aliquam modi reprehenderit vel non! Esse at hic nostrum dignissimos sed officiis, similique labore ducimus ab, asperiores maxime dolorum! Molestiae quis aliquam voluptatem neque, earum eius incidunt animi at voluptas? Ipsa tenetur neque assumenda, labore voluptate possimus odio dolorum atque impedit.</p>
-						  </div>
-						</div>
-					</div>
+					<?php require "views/pin-comments.php"; ?>
 				</div>
 			<?php endif; ?>
 		</div>

@@ -23,9 +23,20 @@ class Pin {
 		DB::getInstance()->query($sql, array($id));
 	}
 
-	// public static function comments($id) {
-	// 	$sql = "SELECT * "
-	// }
+	public static function exists($id) {
+		$pin = DB::getInstance()->query("SELECT id FROM pins WHERE id=?", array($id))->results()[0];
+		return !empty($pin);
+	}
+
+	public static function comments($id) {
+		$sql = "
+			SELECT c.id, c.body, DATE_FORMAT(c.date_added, '%e. %b %k:%i') AS date_added, u.username
+			FROM comments c
+			INNER JOIN users u ON c.author=u.id
+			WHERE c.pin=?
+		";
+		return DB::getInstance()->query($sql, array($id));
+	}
 
 	public static function all($start, $end) {
 		$sql = "
