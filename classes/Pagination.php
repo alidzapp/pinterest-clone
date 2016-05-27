@@ -5,8 +5,8 @@ class Pagination {
 	private $_db;
 
 	public function __construct() {
-		$this->page = isset($_GET["page"]) && $_GET["page"] > 1 ? (int) $_GET["page"] : 1;
-		$this->limit = isset($_GET["limit"]) && $_GET["limit"] <= 50 && $_GET["limit"] > 0 ? (int) $_GET["limit"] : 20;
+		$this->page = isset($_GET["page"]) && (int) $_GET["page"] > 1 ? (int) $_GET["page"] : 1;
+		$this->limit = isset($_GET["limit"]) && (int) $_GET["limit"] <= 50 && $_GET["limit"] > 0 ? (int) $_GET["limit"] : 20;
 		$this->start = $this->page > 1 ? $this->page * $this->limit - $this->limit : 0;
 		$this->_db = DB::getInstance();
 		$this->limits = array(5,10,20,25,35,50);

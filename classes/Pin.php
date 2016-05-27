@@ -23,6 +23,10 @@ class Pin {
 		DB::getInstance()->query($sql, array($id));
 	}
 
+	// public static function comments($id) {
+	// 	$sql = "SELECT * "
+	// }
+
 	public static function all($start, $end) {
 		$sql = "
 			SELECT SQL_CALC_FOUND_ROWS pins.id, pins.img_url, pins.title, users.username, COUNT(DISTINCT likes.id) AS likes, COUNT(DISTINCT reposts.id) AS reposts

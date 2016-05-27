@@ -25,6 +25,16 @@ class User {
 		return false;
 	}
 
+	public static function pinAuthor($username) {
+		if (self::isLoggedIn()) {
+			return Session::get("user") === $username;
+		}
+		return false;
+	}
+
+	// public static function find($username) {
+	// }
+
 	public static function pins($username, $start, $end) {
 		// binding for limit is hard
 		$sql = "

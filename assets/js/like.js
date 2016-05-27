@@ -1,7 +1,7 @@
 $(document).ready(function () {
 	// like
 	$(".likes").on("click", function () {
-		var id = $(this).closest(".masonry-grid-item").data("pinid");
+		var id = $(this).closest(".thumbnail").data("pinid");
 		$.post("likeapin.php", { pinid: id }, function (response) {
 			response = JSON.parse(response);
 			if (response.err) {
@@ -25,7 +25,7 @@ $(document).ready(function () {
 
 	// repost
 	$(".reposts").on("click", function () {
-		var id = $(this).closest(".masonry-grid-item").data("pinid");
+		var id = $(this).closest(".thumbnail").data("pinid");
 		$.post("repostapin.php", { pinid: id }, function (response) {
 			response = JSON.parse(response);
 			if (response.err) {

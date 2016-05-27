@@ -18,9 +18,14 @@
 					<li><a href="login.php">Login</a></li>
 					<li><a href="signup.php">Sign Up</a></li>
 				<?php else : ?>
-					<li><a href="newpin.php">New Pin</a></li>
-					<li><a href="mypins.php">My Pins</a></li>
-					<li><a href="settings.php">Settings</a></li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo htmlspecialchars(Session::get("user")) ?> <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="newpin.php">New Pin</a></li>
+							<li><a href="mypins.php">My Pins</a></li>
+							<li><a href="settings.php">Settings</a></li>
+						</ul>
+					</li>
 					<li><a href="signout.php">Sign Out</a></li>
 				<?php endif; ?>
 			</ul>
