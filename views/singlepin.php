@@ -25,5 +25,5 @@
 	</div>
 </div>
 <div class="col-sm-12">
-	<h4><?php echo $pin->comments; ?> comment(s)</h4>
+	<h4><span class="comment-amount"><?php echo $pin->comments; ?></span> comment(s)</h4>
 </div>

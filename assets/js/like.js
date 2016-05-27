@@ -2,8 +2,7 @@ $(document).ready(function () {
 	// like
 	$(".likes").on("click", function () {
 		var id = $(this).closest(".thumbnail").data("pinid");
-		$.post("likeapin.php", { pinid: id }, function (response) {
-			response = JSON.parse(response);
+		$.post("likeapin.php", { "pinid": id }, function (response) {
 			if (response.err) {
 				switch (response.err) {
 					case "not logged in":
@@ -26,8 +25,7 @@ $(document).ready(function () {
 	// repost
 	$(".reposts").on("click", function () {
 		var id = $(this).closest(".thumbnail").data("pinid");
-		$.post("repostapin.php", { pinid: id }, function (response) {
-			response = JSON.parse(response);
+		$.post("repostapin.php", { "pinid": id }, function (response) {
 			if (response.err) {
 				switch (response.err) {
 					case "not logged in":

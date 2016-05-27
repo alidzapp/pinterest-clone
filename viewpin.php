@@ -69,6 +69,7 @@ require "models/viewpin.php";
 	</div>
 	<?php require "partials/jquerybootstrap.html"; ?>
 	<script src="assets/js/like.js"></script>
+	<script src="assets/js/removeComment.js"></script>
 	<script src="assets/js/jslightbox.min.js"></script>
 </body>
 </html>

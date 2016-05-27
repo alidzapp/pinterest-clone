@@ -116,9 +116,22 @@ body {
 /************ COMMENTS *************/
 
 .pin-comment {
-	margin-top: 40px;
+	margin-top: 30px;
+	/*border-top: 1px solid rgba(0,0,0,0.4);
+	padding-top:10px;*/
 }
 
 .comment-date {
 	opacity: 0.8;
+}
+
+.edit-comment,
+.remove-comment {
+	cursor: pointer;
+	color: #337ab7;
+}
+
+.edit-comment:hover,
+.remove-comment:hover {
+	text-decoration: underline;
 }

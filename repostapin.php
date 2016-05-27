@@ -1,4 +1,6 @@
 <?php
+
+header("Content-Type: application/json");
 require "core/init.php";
 
 if (!User::isLoggedIn()) {
@@ -20,17 +22,17 @@ if (!User::isLoggedIn()) {
 			if (!$repost->count()) {
 				// need to create repost
 				Repost::create(Input::get("pinid"), $userId);
-				echo json_encode(array("reposted" => false));
+				echo json_encode(array("reposted" => 0));
 			} else if ($repost->count()) {
 				// need to remove repost from db
 				$repostId = $repost->results()[0]->id;
 				Repost::removeRepost($repostId);
-				echo json_encode(array("reposted" => true));
+				echo json_encode(array("reposted" => 1));
 			}
 		} else {
-			echo "cant repost your own pin";
+			echo json_encode(array("err" => "cant repost your own pin"));
 		}
 	} else {
-		echo "pin doesnt exist";
+		echo json_encode(array("err" => "pin doesnt exist"));
 	}
 }

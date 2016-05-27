@@ -1,4 +1,6 @@
 <?php
+
+header("Content-Type: application/json");
 require "core/init.php";
 
 if (!User::isLoggedIn()) {
@@ -20,17 +22,17 @@ if (!User::isLoggedIn()) {
 			if (!$like->count()) {
 				// need to create like
 				Like::create(Input::get("pinid"), $userId);
-				echo json_encode(array("liked" => false));
+				echo json_encode(array("liked" => 0));
 			} else {
 				// need to remove like from db (dislike)
 				$likeId = $like->results()[0]->id;
 				Like::removeLike($likeId);
-				echo json_encode(array("liked" => true));
+				echo json_encode(array("liked" => 1));
 			}
 		} else {
-			echo "cant like your own pin";
+			echo json_encode(array("err" => "cant like your own pin"));
 		}
 	} else {
-		echo "pin doesnt exist";
+		echo json_encode(array("err" => "pin doesnt exist"));
 	}
 }
