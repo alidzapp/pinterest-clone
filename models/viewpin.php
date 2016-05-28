@@ -11,9 +11,10 @@ if (isset($_GET["id"]) && (int) $_GET["id"] > 0) {
 		WHERE p.id=?
 		GROUP BY p.id",
 		array($id)
-	)->results()[0];
+	)->results();
 
 	if (!empty($pin)) {
+		$pin = $pin[0];
 		$comments = Pin::comments($id)->results();
 	}
 } else {

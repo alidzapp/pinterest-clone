@@ -20,7 +20,12 @@ class Comment {
 	}
 
 	public static function getAuthor($id) {
-		$sql = "SELECT u.username FROM comments c INNER JOIN users u ON c.author=u.id WHERE c.id=?";
+		$sql = "
+			SELECT u.username
+			FROM comments c
+			INNER JOIN users u ON c.author=u.id
+			WHERE c.id=?
+		";
 		$user = DB::getInstance()->query($sql, array($id));
 		return $user->results()[0]->username;
 	}

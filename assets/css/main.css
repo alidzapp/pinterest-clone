@@ -132,6 +132,11 @@ body {
 }
 
 .edit-comment:hover,
-.remove-comment:hover {
+.remove-comment:hover,
+.sort-active {
 	text-decoration: underline;
+}
+
+.sort {
+	cursor: pointer;
 }

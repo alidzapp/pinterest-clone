@@ -14,7 +14,12 @@ class Pin {
 	}
 
 	public static function find($id) {
-		$sql = "SELECT * from pins INNER JOIN users on pins.author_id=users.id WHERE pins.id=?";
+		$sql = "
+			SELECT *
+			FROM pins
+			INNER JOIN users ON pins.author_id=users.id
+			WHERE pins.id=?
+		";
 		return DB::getInstance()->query($sql, array($id));
 	}
 

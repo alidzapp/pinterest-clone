@@ -63,6 +63,12 @@ require "models/viewpin.php";
 
 				<?php if (!empty($comments)) : ?>
 					<div class="col-sm-12">
+					<span class="help-block">
+						<span class="sort sort-active">Newest first</span> |
+						<span class="sort">Oldest first</span>
+					</span>
+					</div>
+					<div class="col-sm-12 comments-container">
 						<?php require "views/pin-comments.php"; ?>
 					</div>
 					<div class="modal fade" tabindex="-1" role="dialog" id="edit-modal">
@@ -92,6 +98,7 @@ require "models/viewpin.php";
 	<?php if (!empty($comments)) : ?>
 		<script src="assets/js/removeComment.js"></script>
 		<script src="assets/js/editComment.js"></script>
+		<script src="assets/js/sortComments.js"></script>
 	<?php endif; ?>
 </body>
 </html>
