@@ -10,7 +10,7 @@ if (isset($_POST["comment"], $_GET["id"]) && User::isLoggedIn()) {
 			$user = User::find(Session::get("user"));
 			$comment = new Comment();
 			$comment->create($user->id, $pinId, $body);
-			Redirect::to("viewpin.php?id=" . $pinId);
+			Redirect::to("viewpin.php?id=" . $pinId . "#" . DB::getInstance()->lastId());
 		}
 	}
 }
@@ -61,15 +61,37 @@ require "models/viewpin.php";
 					</div>
 				</div>
 
-				<div class="col-sm-12">
-					<?php require "views/pin-comments.php"; ?>
-				</div>
+				<?php if (!empty($comments)) : ?>
+					<div class="col-sm-12">
+						<?php require "views/pin-comments.php"; ?>
+					</div>
+					<div class="modal fade" tabindex="-1" role="dialog" id="edit-modal">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+									<h3 class="modal-title">Edit comment</h3>
+								</div>
+								<div class="modal-body">
+									<textarea cols="30" rows="5" class="form-control new-comment"></textarea>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+									<button type="button" class="btn btn-primary edit-btn">Edit</button>
+								</div>
+							</div><!-- /.modal-content -->
+						</div><!-- /.modal-dialog -->
+					</div><!-- /.modal -->
+				<?php endif; ?>
 			<?php endif; ?>
 		</div>
 	</div>
 	<?php require "partials/jquerybootstrap.html"; ?>
 	<script src="assets/js/like.js"></script>
-	<script src="assets/js/removeComment.js"></script>
 	<script src="assets/js/jslightbox.min.js"></script>
+	<?php if (!empty($comments)) : ?>
+		<script src="assets/js/removeComment.js"></script>
+		<script src="assets/js/editComment.js"></script>
+	<?php endif; ?>
 </body>
 </html>

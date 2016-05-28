@@ -34,6 +34,8 @@ class Pin {
 			FROM comments c
 			INNER JOIN users u ON c.author=u.id
 			WHERE c.pin=?
+			GROUP BY c.id
+			ORDER BY c.id DESC
 		";
 		return DB::getInstance()->query($sql, array($id));
 	}

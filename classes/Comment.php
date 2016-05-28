@@ -15,6 +15,10 @@ class Comment {
 		DB::getInstance()->query("DELETE FROM comments WHERE id=?", array($id));
 	}
 
+	public static function update($id, $body) {
+		DB::getInstance()->query("UPDATE comments SET body=? WHERE id=?", array($body, $id));
+	}
+
 	public static function getAuthor($id) {
 		$sql = "SELECT u.username FROM comments c INNER JOIN users u ON c.author=u.id WHERE c.id=?";
 		$user = DB::getInstance()->query($sql, array($id));
