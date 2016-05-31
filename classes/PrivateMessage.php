@@ -13,4 +13,17 @@ class PrivateMessage {
 			array($sender, $recipient, $subject, $body)
 		);
 	}
+
+	public static function get($id) {
+		$sql = "
+			SELECT id, sender, recipient, subject, body, DATE_FORMAT(send_time, '%d-%m-%Y %k:%i') AS send_time
+			FROM private_messages
+			WHERE id=?
+		";
+		if ($pm = DB::getInstance()->query($sql, array($id))->results()) {
+			return $pm[0];
+		}
+
+		return false;
+	}
 }

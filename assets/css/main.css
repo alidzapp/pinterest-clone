@@ -8,6 +8,10 @@ body {
 	padding: 0;
 }
 
+.bold-text {
+	font-weight: 700;
+}
+
 /************ MAIN NAVBAR *************/
 
 .main-bg {

@@ -32,6 +32,14 @@ class User {
 		return false;
 	}
 
+	public static function findById($id) {
+		if ($user = DB::getInstance()->query("SELECT * FROM users WHERE id=?", array($id))->results()) {
+			return $user[0];
+		}
+
+		return false;
+	}
+
 	public static function find($username) {
 		return DB::getInstance()
 			->query("SELECT * FROM users WHERE username=?", array($username))
@@ -64,7 +72,7 @@ class User {
 
 	public static function privateMessages($username) {
 		$sql = "
-			SELECT pm.id, pm.subject, pm.body, u.username AS sender, DATE_FORMAT(pm.send_time, '%d-%m-%y %k:%i') AS send_time
+			SELECT pm.id, pm.subject, pm.body, u.username AS sender, DATE_FORMAT(pm.send_time, '%d-%m-%Y %k:%i') AS send_time
 			FROM private_messages pm
 			INNER JOIN users u ON pm.sender=u.id
 			WHERE recipient=(
@@ -72,6 +80,7 @@ class User {
 			    FROM users
 			    WHERE username=?
 			)
+			ORDER BY pm.id DESC;
 		";
 
 		return DB::getInstance()->query($sql, array($username))->results();
