@@ -62,6 +62,21 @@ class User {
 		return DB::getInstance()->query($sql, array($username, $username));
 	}
 
+	public static function privateMessages($username) {
+		$sql = "
+			SELECT pm.id, pm.subject, pm.body, u.username AS sender, DATE_FORMAT(pm.send_time, '%d-%m-%y %k:%i') AS send_time
+			FROM private_messages pm
+			INNER JOIN users u ON pm.sender=u.id
+			WHERE recipient=(
+				SELECT id
+			    FROM users
+			    WHERE username=?
+			)
+		";
+
+		return DB::getInstance()->query($sql, array($username))->results();
+	}
+
 	public static function logIn($username, $pass) {
 		$sql = "SELECT password FROM users WHERE username=?";
 		$user = DB::getInstance()->query($sql, array($username));

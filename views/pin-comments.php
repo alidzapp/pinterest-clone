@@ -8,8 +8,8 @@
 			<p class="comment-body"><?php echo htmlspecialchars($comment->body); ?></p>
 			<div class="comment-date"><?php echo $comment->date_added; ?></div>
 			<?php if (Comment::author($comment->username)) : ?>
-				<span class="edit-comment">Edit</span> /
-				<span class="remove-comment">Remove</span>
+				<span class="remove-comment">Remove</span> /
+				<span class="edit-comment">Edit</span>
 			<?php endif; ?>
 		</div>
 	</div>

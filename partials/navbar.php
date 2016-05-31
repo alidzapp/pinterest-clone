@@ -24,6 +24,7 @@
 							<li><a href="newpin.php">New Pin</a></li>
 							<li><a href="mypins.php">My Pins</a></li>
 							<li><a href="settings.php">Settings</a></li>
+							<li><a href="inbox.php">Inbox</a></li>
 						</ul>
 					</li>
 					<li><a href="signout.php">Sign Out</a></li>

@@ -41,6 +41,15 @@ class Validate {
 				case "comment":
 					$this->checkComment($input);
 					break;
+				case "recipient":
+					$this->checkRecipient($input);
+					break;
+				case "subject":
+					$this->checkSubject($input);
+					break;
+				case "messageBody":
+					$this->checkMessageBody($input);
+					break;
 			}
 		}
 
@@ -151,6 +160,31 @@ class Validate {
 	private function checkImg($img) {
 		if (!filter_var($img, FILTER_VALIDATE_URL) || !$this->isImg($img)) {
 			$this->addError("pinurl", "Doesn't look like an image.");
+		}
+	}
+
+	public function checkRecipient($user) {
+		if (!mb_strlen($user)) {
+			$this->addError("recipient", "Recipient is required.");
+		} else {
+			$recipient = User::find($user)->username;
+			if (!$recipient) {
+				$this->addError("recipient", "User doesn't exist.");
+			} elseif (User::isLoggedIn() && Session::get("user") === $recipient) {
+				$this->addError("recipient", "Can't send message to yourself.");
+			}
+		}
+	}
+
+	public function checkSubject($subject) {
+		if (!mb_strlen($subject) || mb_strlen($subject) > 250) {
+			$this->addError("subject", "Subject must be between 1 and 250 characters.");
+		}
+	}
+
+	public function checkMessageBody($body) {
+		if (!mb_strlen($body)) {
+			$this->addError("messageBody", "Message cannot be empty.");
 		}
 	}
 

@@ -21,7 +21,8 @@ $(document).ready(function () {
 				});
 				break;
 		}
-		$parentDiv.append($comments);
+
+		$parentDiv.append($comments).fadeIn("slow");
 		active($(this));
 	}
 
