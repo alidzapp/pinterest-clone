@@ -6,3 +6,4 @@
 * admin
 * pagination
 * private messages
+* markdown for messages

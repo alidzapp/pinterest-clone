@@ -34,6 +34,6 @@ class Comment {
 		if (User::isLoggedIn()) {
 			return $username === Session::get("user");
 		}
-		return false;
+		return null;
 	}
 }

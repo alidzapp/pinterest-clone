@@ -1,18 +1,29 @@
-<?php
-
-foreach ($pins as $pin) {
-	echo '<div class="masonry-grid-item thumbnail" data-pinid="', $pin->id, '">';
-	echo '<a href="', $pin->img_url, '" data-lightbox="', htmlentities(htmlspecialchars($pin->title)), '" data-title="', htmlentities(htmlspecialchars($pin->title)), '">';
-	echo '<img src="', $pin->img_url, '" alt="', htmlspecialchars($pin->title), '" title="Enlarge"></a>';
-	echo '<div class="caption">';
-	echo '<h4>', htmlspecialchars($pin->title), '</h4>';
-	if (User::pinAuthor($pin->username)) {
-		echo '<span class="likes-block">', $pin->likes, ' likes ', $pin->reposts, ' reposts</span>';
-		echo '<a class="pull-left" href="removepin.php?id=', $pin->id, '">Remove</a>';
-	} else {
-		echo '<span class="likes-block"><span class="likes"><span class="likes-amount">', $pin->likes, '</span> likes</span> <span class="reposts"><span class="reposts-amount">', $pin->reposts, '</span> reposts</span></span>';
-		echo '<a class="pull-left" href="viewprofile.php?user=', urlencode($pin->username), '">', htmlspecialchars($pin->username), '</a>';
-	}
-	echo '<a class="pull-right" href="viewpin.php?id=', $pin->id, '">Discuss</a>';
-	echo '</div></div>';
-}
+<?php foreach ($pins as $pin) : ?>
+	<div class="masonry-grid-item thumbnail" data-pinid="<?php echo $pin->id; ?>">
+		<a href="<?php echo htmlspecialchars($pin->img_url); ?>"
+		data-lightbox="<?php echo htmlentities(htmlspecialchars($pin->title)); ?>"
+		data-title="<?php echo htmlentities(htmlspecialchars($pin->title)); ?>">
+			<img src="<?php echo $pin->img_url; ?>" alt="<?php echo htmlspecialchars($pin->title); ?>" title="Enlarge">
+		</a>
+		<div class="caption">
+			<h4><?php echo htmlspecialchars($pin->title); ?></h4>
+			<?php if (User::pinAuthor($pin->username)) : ?>
+				<span class="likes-block"><?php echo $pin->likes, " likes ", $pin->reposts, " reposts"; ?></span>
+				<a href="removepin.php?id=<?php echo $pin->id; ?>" class="pull-left">Remove</a>
+			<?php else : ?>
+				<span class="likes-block">
+					<span class="likes">
+						<span class="likes-amount"><?php echo $pin->likes; ?></span> likes
+					</span>
+					<span class="reposts">
+						<span class="reposts-amount"><?php echo $pin->reposts; ?></span> reposts
+					</span>
+				</span>
+				<a href="viewprofile.php?user=<?php echo urlencode($pin->username); ?>" class="pull-left">
+					<?php echo htmlspecialchars($pin->username); ?>
+				</a>
+			<?php endif; ?>
+			<a href="viewpin.php?id=<?php echo $pin->id; ?>" class="pull-right">Discuss</a>
+		</div>
+	</div>
+<?php endforeach; ?>

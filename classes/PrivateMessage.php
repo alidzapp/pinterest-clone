@@ -14,7 +14,7 @@ class PrivateMessage {
 		);
 	}
 
-	public static function get($id) {
+	public static function find($id) {
 		$sql = "
 			SELECT id, sender, recipient, subject, body, DATE_FORMAT(send_time, '%d-%m-%Y %k:%i') AS send_time
 			FROM private_messages
@@ -24,6 +24,6 @@ class PrivateMessage {
 			return $pm[0];
 		}
 
-		return false;
+		return null;
 	}
 }

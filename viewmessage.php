@@ -7,7 +7,7 @@ if (!User::isLoggedIn()) {
 }
 
 if (isset($_GET["id"]) && (int) $_GET["id"] > 0) {
-	$pm = PrivateMessage::get((int) $_GET["id"]);
+	$pm = PrivateMessage::find((int) $_GET["id"]);
 
 	if ($pm) {
 		$recipientId = $pm->recipient;
@@ -20,7 +20,7 @@ if (isset($_GET["id"]) && (int) $_GET["id"] > 0) {
 		$sender = User::findById($pm->sender)->username;
 		echo "exists";
 	} else {
-		echo "message with id: ", $_GET["id"], " does not exist";
+		echo "message with id: ", (int) $_GET["id"], " does not exist";
 	}
 } else {
 	Redirect::to("index.php");

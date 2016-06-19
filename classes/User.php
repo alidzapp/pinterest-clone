@@ -36,8 +36,7 @@ class User {
 		if ($user = DB::getInstance()->query("SELECT * FROM users WHERE id=?", array($id))->results()) {
 			return $user[0];
 		}
-
-		return false;
+		return null;
 	}
 
 	public static function find($username) {
